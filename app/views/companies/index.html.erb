@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Companies</h1>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class='table table-dark'>
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Empleado</th>
+              <th>Email</th>
+              <th>Area</th>
+              <th colspan="3"></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @companies.each do |company| %>
+              <tr>
+                <td><%= link_to company.name, company, class:'text-light' %></td>
+                    <% company.employees.each do |employ| %>
+                        <td><%= employ %></td> 
+                        <td><%= employ.area%></td>
+                        <td><%= link_to 'Show', company, class: 'text-light btn btn-primary' %></td>
+                        <td><%= link_to 'Edit', edit_company_path(company), class:'text-light btn btn-primary' %></td>
+                        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class:'text-light btn btn-danger' %></td>
+                    <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<%= link_to 'New Company', new_company_path %>
